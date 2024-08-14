@@ -86,13 +86,13 @@ for (i in c(1:ncol(raw_data_clean))) {
 ### 2.4 invert negative Coded Items
 
 
-# Data Frame for all coluns with negative coded items
+# Data Frame for all columns with negative coded items
 
 
 cols_negCod <- dplyr::select(raw_data_clean, matches(c("SQ003","SQ005","SQ006",
                                                   "SQ007","SQ008", "SQ010")))
 
-
+# Index for all columns with negative coded items in raw_data_clean
 Index_negCod <- which(raw_data_clean %in% cols_negCod)
 
 
@@ -273,7 +273,14 @@ between_STA_data <- add_sums(between_STA_data)
 general_STA_data <- add_sums(general_STA_data)
 
 
+#general_STA_data: For every participant, there are six rows, corresponding
+# to the six experimental conditions
 
+# between_STA_data: Every row represents a participant. Only the responses
+# to the first vignette presented are included
+
+# within_STA_data: Every row represents a participant: All responses to the six vignettes
+# are included
 
 ################################################################################
 ################################################################################
@@ -492,7 +499,6 @@ sd(data_SCALI_Aes$Sum)
 #epsilon_squared <- (H - k + 1) / (n - k)
 
 
-
 ## 4.2.2 gender distribution - social
 
 #tapply(raw_data_clean$G01Q05, raw_data_clean$Gleichung, table)
@@ -512,7 +518,7 @@ sd(data_SCALI_Aes$Sum)
 #Fisher_test_gender <- fisher.test(matrix_gender)
 
 
-
+# package lsr for Cramer's V
 #if (!require(lsr)) install.packages("lsr")
 #library(lsr)
 
@@ -685,7 +691,7 @@ etaSquared(aov_int)
 
 
 
-# c1
+# Self-Efficacy
 
 # Normal Distribution: Boxplots
 boxplot(data_SCALI_C1$Sum ~ data_SCALI_C1$Gleichung,
@@ -711,7 +717,7 @@ etaSquared(aov_C1)
 
 
 
-# Aes
+# Artistic interests
 
 # Normal Distribution: Boxplots
 boxplot(data_SCALI_Aes$Sum ~ data_SCALI_Aes$Gleichung,
@@ -743,10 +749,10 @@ etaSquared(aov_Aes)
 # overall, correlative
 
 
-# Define Dataset
+# Define Dataset with all item columns from the between_subject data
 items_stats_b <- between_STA_data[, c(8:18, 79,80)]
 
-
+#Calculate Cronbach's Alphas for Liberalism and Intellect
 alphas_Lib_agg_between <- psych::alpha(dplyr::select(items_stats_b, matches(c("SQ002","SQ004","SQ006",
                                                               "SQ008"))))
 alphas_Int_agg_between <- psych::alpha(dplyr::select(items_stats_b, matches(c("SQ001","SQ003","SQ005","SQ007"))))
