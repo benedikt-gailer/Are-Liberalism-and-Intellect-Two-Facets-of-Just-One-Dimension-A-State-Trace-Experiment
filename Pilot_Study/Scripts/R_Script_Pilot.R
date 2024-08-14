@@ -1,11 +1,18 @@
+# set working directory
+setwd("C:/Users/bened/OneDrive/Desktop/TUC/Wintersemester 202223/Masterarbeit/R_Analysen/STA-master/STA-master/STACMR-R")
 
-###############################################################################
+# The folder "STACMR-R" needs to be the working directory. This folder is part
+# of the STACMR-R package by Dunn and Kalish (2020), that needs to be
+# installed properly following a tutorial.
+# This tutorial can be accessed under: https://github.com/michaelkalish/STA/tree/master
+# File Path: STACMR-R --> STACMR-R.pdf
 
 #### 0. Pakete
 
 library(readr)
 library(dplyr)
 library(tidyr)
+library(psych)  
 
 install.packages(devtools)
 library(devtools)
