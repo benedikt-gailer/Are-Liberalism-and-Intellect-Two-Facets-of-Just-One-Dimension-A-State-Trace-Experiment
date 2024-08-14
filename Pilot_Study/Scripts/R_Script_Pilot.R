@@ -387,9 +387,9 @@ merged_items <- rbind(merger_Bed1, merger_Bed2, merger_Bed3, merger_Bed4)
 
 # Alphas for aggregated data
 
-alphas_Lib_agg <- alpha(dplyr::select(merged_items, matches(c("SQ002","SQ004","SQ006",
+alphas_Lib_agg <- psych::alpha(dplyr::select(merged_items, matches(c("SQ002","SQ004","SQ006",
                                                               "SQ008"))))
-alphas_Int_agg <- alpha(dplyr::select(merged_items, matches(c("SQ001","SQ003","SQ005",
+alphas_Int_agg <- psych::alpha(dplyr::select(merged_items, matches(c("SQ001","SQ003","SQ005",
                                                               "SQ007"))))
 
 
