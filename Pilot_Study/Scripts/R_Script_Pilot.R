@@ -37,7 +37,7 @@ View(survey_Data_Pilot_raw)
 #### 2. Tidy Data
 
 
-# 2.1 Rename Columns and delete unneccessary ones
+# 2.1 Delete unnecessary columns
 
 colnames(survey_Data_Pilot_raw) 
 
@@ -50,7 +50,7 @@ survey_data_tidy <- survey_Data_Pilot_raw[,
                     !names(survey_Data_Pilot_raw) %in% del_cols_rawData]
 
 
-# Convert A* into numeric scale points
+# 2.1 Convert response codes (A*) to numeric values from 1-5
 
 library(dplyr)
 
@@ -71,13 +71,13 @@ survey_data_tidy[is.na(survey_data_tidy)] <- "0"
 
 # Loop
 
-#Select all question Items from the survey's main part
+#Select all question Items from the survey's main part...
 
 library(dplyr)
 
 cols_likert <- dplyr::select(survey_data_tidy, matches("SQ"))
 
-
+#... and make them all numeric
 for (i in c(1:ncol(survey_data_tidy))) {
   if (colnames(survey_data_tidy)[[i]] %in% colnames(cols_likert)) {
     survey_data_tidy[[i]] <- as.numeric(survey_data_tidy[[i]])
@@ -85,7 +85,7 @@ for (i in c(1:ncol(survey_data_tidy))) {
 }
 
 
-# 2.2 Reverse negative coded items
+# 2.3 Reverse negative coded items
 
 #SQ003
 #SQ005
@@ -93,17 +93,17 @@ for (i in c(1:ncol(survey_data_tidy))) {
 #SQ007
 #SQ008
 
-# Data.Frame for all columns with negative coded items
+# Create Data.Frame for all columns with negative coded items
 
 
 cols_negCod <- dplyr::select(survey_data_tidy, matches(c("SQ003","SQ005","SQ006",
                                                   "SQ007","SQ008")))
 
-
+# Create Index for all columns with negative coded items in survey data tidy
 Index_negCod <- which(survey_data_tidy %in% cols_negCod)
 
 
-
+# Invert items: response value - 6 
 survey_data_tidy[,Index_negCod] <- 6 - survey_data_tidy[,Index_negCod]
 
 # 6 now signifies NA
@@ -127,8 +127,6 @@ for (i in Index_negCod) {
 
 
 # 2.3.1 Add Sum Scores for Int and Lib
-
-
 
 
 #Lib Items:
@@ -161,15 +159,14 @@ sumscoreSTA <- function(dat, condition) {
   
   
 # Calculate Sum Score
-
+#First, create data frames with all liberalism and intellect item columns  
 Lib_cols <- dplyr::select(sel_cols, matches(c("SQ002", "SQ004", "SQ006", "SQ008")))
 Int_cols <- dplyr::select(sel_cols, matches(c("SQ001", "SQ003", "SQ005", "SQ007")))
-
+# Calculate sum
 sumLib <- apply(Lib_cols, MARGIN = 1, FUN = sum)
 sumInt <- apply(Int_cols, MARGIN = 1, FUN = sum)
 
 # Create List of Variables
-
 List_sum <- list(sumLib, sumInt)
 
 # Name List
@@ -181,7 +178,7 @@ rm(List_sum)
 return(get(List_name))
 }
 
-
+# Apply sum function to variables pfor all conditions each
 #   1   C10O1
 Liste_C10O1 <- sumscoreSTA(dat = survey_data_tidy, condition = "C10O1")
 
@@ -196,14 +193,14 @@ Liste_C10O0 <- sumscoreSTA(dat = survey_data_tidy, condition = "C10O0")
 
 
 
-# Add columns Lib
+# Add Liberalism sum columns to survey data tidy 
 
 survey_data_tidy$sumLib_C10O1 <- unlist(Liste_C10O1[1])
 survey_data_tidy$sumLib_C11O0 <- unlist(Liste_C11O0[1])
 survey_data_tidy$sumLib_C11O1 <- unlist(Liste_C11O1[1])
 survey_data_tidy$sumLib_C10O0 <- unlist(Liste_C10O0[1])
 
-# Add clumns Int
+# Add Intellect sum columns to survey data tidy 
 
 survey_data_tidy$sumInt_C10O1 <- unlist(Liste_C10O1[2])
 survey_data_tidy$sumInt_C11O0 <- unlist(Liste_C11O0[2])
@@ -212,7 +209,7 @@ survey_data_tidy$sumInt_C10O0 <- unlist(Liste_C10O0[2])
 
 
 
-# Liberalsim and Intellect sum scores
+# Add Liberalsim and Intellect sum scores
 
 survey_data_tidy$sumLib <- apply(dplyr::select(survey_data_tidy, 
                                 matches("sumLib")), MARGIN = 1, FUN = sum)
@@ -222,7 +219,7 @@ survey_data_tidy$sumInt <- apply(dplyr::select(survey_data_tidy,
 
 
 
-# Create Data subset
+# Create Data subset for STA-Analysis relevant Data
 
 data_STA <- dplyr::select(survey_data_tidy, id, Gleichung, sumInt, sumLib)
 
@@ -270,7 +267,7 @@ long_data_STA <- as.data.frame(long_data_STA)
 long_data_STA$id <- rep(1:42, times = 2)
 
 
-# AV Index an staPLOT() Normen anpassen
+# Adapt AV Index to staPLOT() norms 
 
 #Lib = AV1
 #Int = AV2
@@ -326,7 +323,7 @@ table(survey_data_tidy$Gleichung)
 
 
 
-# 4.2 Internal Consistency (Thesis Section 4.3)
+# 4.2 Internal Consistencies of DV scales (Thesis Section 4.3)
 
 # Cronbachs alphas 
 
@@ -334,7 +331,7 @@ table(survey_data_tidy$Gleichung)
 library(psych)  
 library(dplyr)
 
-# first: Create subsets for individual Conditions
+# first: Create subsets for individual Conditions 1-4
 
 survey_data_tidy_Bed_1 <-  survey_data_tidy[survey_data_tidy$Gleichung == 1,] %>%
   dplyr::select(matches(c("C10O1", "Gleichung"))) %>%
@@ -361,12 +358,12 @@ survey_data_tidy_Bed_4 <-  survey_data_tidy[survey_data_tidy$Gleichung == 4,]%>%
 # Crobach's Alphas
 
 
-# Norm Columns first
+# Norm Column names first
 
 Col_names <- c("SQ001", "SQ002", "SQ003", "SQ004", "SQ010", "SQ005",
                "SQ006", "SQ009", "SQ007", "SQ008", "Sum_Lib", "Sum_Int", "Gleichung")
 
-# Create data.frames for merging 
+# Create data.frames with same column names for merging 
 merger_Bed1 <- survey_data_tidy_Bed_1
 colnames(merger_Bed1) <- Col_names
 
@@ -399,10 +396,12 @@ alphas_Int_agg <- psych::alpha(dplyr::select(merged_items, matches(c("SQ001","SQ
 
 #C10: Check Item C05 responses for Conditions with low self-efficacy
 
+#get all C05 item answers for low self-efficacy conditions 
 C10_vec <- c(survey_data_tidy$`C10O0prox[SQ009]`, survey_data_tidy$`C10O1[SQ009]`)
 
 table(C10_vec)
 
+# omit 0 values from high-self-efficacy subjects
 new_C10_vec <- C10_vec[C10_vec != 0]
 
 hist(new_C10_vec, main = "Antworten Kompetenz: Bedingung wenig Kompetenz", 
@@ -412,10 +411,12 @@ hist(new_C10_vec, main = "Antworten Kompetenz: Bedingung wenig Kompetenz",
 
 #C11: Check Item C05 responses for Conditions withhigh self-efficacy
 
+#get all C05 item answers for high self-efficacy conditions 
 C11_vec <- c(survey_data_tidy$`C11O0prox[SQ009]`, survey_data_tidy$`C11O1prox[SQ009]`)
 
 table(C11_vec)
 
+# omit 0 values from low self-efficacy subjects
 new_C11_vec <- C11_vec[C11_vec != 0]
 
 
@@ -482,8 +483,8 @@ for (i in 1:length(D_O1)) {
 }
 
 #Add Dummy Variable to Data
-merged_items_manicheck$D_C11 <- D_C11
-merged_items_manicheck$D_O1 <- D_O1
+merged_items_manicheck$D_C11 <- D_C11 # self-efficacy 
+merged_items_manicheck$D_O1 <- D_O1 # artistic interests
 
 
 # Manipulation check Self-efficacy and O5 (Thesis Section 4.6.1, p.36)
@@ -536,7 +537,7 @@ sd(new_O1_vec)
 
 setwd("C:/Users/bened/OneDrive/Desktop/TUC/Wintersemester 202223/Masterarbeit/R_Analysen/STA-master/STA-master/STACMR-R")
 source("staCMRsetup.R")
-
+# The folder "STACMR-R" needs to be the working directory. 
 
 
 
@@ -707,7 +708,7 @@ legend.text = element_text(size = 14)
 # Index 2 = Intellect
 
 
-# Differences between Origial Data and CMR predictions
+# Get Differences between Origial Data and CMR predictions
 
 Diffs_Lib <-  CMR$x[[1]] - STATS[[1]]$means
 
@@ -719,7 +720,7 @@ Diffs <- data.frame(Diffs_Lib, Diffs_Int)
 colnames(Diffs) <- c("Lib", "Int")
 
 
-
+# Shift empirical Data points to predicted CMR values
 # Equation: CMR - STATS = Diff
 
 long_data_SimSTA <- long_data_STA
