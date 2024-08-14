@@ -406,14 +406,14 @@ data_SCALI_Lib <- dplyr::select(data_SCALI, matches(c("002", "004",
                                                "006", "008", "Gleichung")))
 data_SCALI_Lib$Sum <- rowSums(data_SCALI_Lib[, 1:4])
 
-alpha(data_SCALI_Lib[,1:4])
+psych::alpha(data_SCALI_Lib[,1:4])
 
 #Int
 data_SCALI_Int <- dplyr::select(data_SCALI, matches(c("001", "003",
                                                "005", "007", "Gleichung")))
 data_SCALI_Int$Sum <- rowSums(data_SCALI_Int[, 1:4])
 
-alpha(data_SCALI_Int[,1:4])
+psych::alpha(data_SCALI_Int[,1:4])
 
 
 #Self-Efficacy
@@ -421,14 +421,14 @@ data_SCALI_C1 <- dplyr::select(data_SCALI, matches(c("009", "012",
                                                "013", "016", "Gleichung")))
 data_SCALI_C1$Sum <- rowSums(data_SCALI_C1[, 1:4])
 
-alpha(data_SCALI_C1[,1:4])
+psych::alpha(data_SCALI_C1[,1:4])
 
 #Artistic Interests
 data_SCALI_Aes <- dplyr::select(data_SCALI, matches(c("929", "015",
                                                "438", "010", "Gleichung")))
 data_SCALI_Aes$Sum <- rowSums(data_SCALI_Aes[, 1:4])
 
-alpha(data_SCALI_Aes[,1:4])
+psych::alpha(data_SCALI_Aes[,1:4])
 
 
 # MVs und SDs (Thesis Table 2, M and SD columns)
@@ -747,9 +747,9 @@ etaSquared(aov_Aes)
 items_stats_b <- between_STA_data[, c(8:18, 79,80)]
 
 
-alphas_Lib_agg_between <- alpha(dplyr::select(items_stats_b, matches(c("SQ002","SQ004","SQ006",
+alphas_Lib_agg_between <- psych::alpha(dplyr::select(items_stats_b, matches(c("SQ002","SQ004","SQ006",
                                                               "SQ008"))))
-alphas_Int_agg_between <- alpha(dplyr::select(items_stats_b, matches(c("SQ001","SQ003","SQ005","SQ007"))))
+alphas_Int_agg_between <- psych::alpha(dplyr::select(items_stats_b, matches(c("SQ001","SQ003","SQ005","SQ007"))))
 
 
 
