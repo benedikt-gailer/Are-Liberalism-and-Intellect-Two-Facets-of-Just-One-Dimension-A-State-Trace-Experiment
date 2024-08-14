@@ -37,8 +37,7 @@ library(tidyverse)
 
 
 library(readr)
-raw_data <- read_csv("C:/Users/bened/OneDrive/Desktop/TUC/Wintersemester 202223/Masterarbeit/Daten_MA/Data_Main.csv",
-                    )
+raw_data <- read_csv("C:/Users/bened/OneDrive/Desktop/TUC/Wintersemester 202223/Masterarbeit/Daten_MA/Data_Main.csv")
 
 View(raw_data)
 
