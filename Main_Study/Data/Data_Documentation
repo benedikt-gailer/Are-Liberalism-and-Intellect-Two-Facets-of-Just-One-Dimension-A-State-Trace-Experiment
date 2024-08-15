@@ -1,0 +1,103 @@
+
+Opening comments:
+
+1. Experimental Conditions
+
+There are six experimental conditions. Experimental Conditions differ in the described personality traits
+of the vignette person:
+1 = Low self-efficacy, high artistic interests
+2 = High self-efficacy, low artistic interests
+3 = Low self-efficacy, moderate artistic interests
+4 = High self-efficacy, moderate artistic interests
+5 = High self-efficacy, high artistic interersts
+6 = Low self-efficacy, low artistic interests
+
+In Main_Data.csv, these conditions are keyed as:
+1 = C10O1
+2 = C11O0
+3 = C10OM
+4 = C11OM
+5 = C11O1
+6 = C10O0
+
+
+Every Subject goes through all six of them (withn-subject design).
+However, the first experimental condition subjects go through is analysed seperately. If only the first
+conditions subjects underwent are analysed, the data can be treated as between-subject data. 
+
+
+2. IPIP-NEO-120 (Johnson, 2014) scale items used
+
+There are four scales being used: Liberalism, Intellect, Self-efficacy, and Artistic interests
+For the vignette ratings (DVs and manipulation check), only Liberalism, Intellect, Item C05 
+(from self-efficacy) and item O89 (from artistic interests) were used. All scales and items were used in subject's 
+self-assessments. In the following table, each IPIP-NEO-120 item is paired with the correpsonding response
+key in Data_Main.csv: 
+
+
+Liberalism		Self-efficacy	
+
+item O28 =  SQ002 	item C35 = SQ016		
+item O58 =  SQ004	item C65 = SQ012		
+item O88 =  SQ006	item C95 = SQ013		
+item O118 = SQ008	item C05 = SQ009		
+
+Intellect		Artistic interests
+
+item O23 =  SQ001	O98 = SQ010
+item O53 =  SQ003	O08 = SQ92900
+item O83 =  SQ005	O38 = SQ015
+item O113 = SQ007	O68 = SQ43802
+
+
+
+3. General Structure of the Data
+
+
+Columns 1 - 5: 	   Survey Metadata
+Columns 6 - 7: 	   Informed Consent
+Column 8:      	   Interim Screen
+Column 9:      	   First experimental Condition Subjects go through
+Columns 10 - 69:   Subject's vignette ratings for the first experimental condition they went through:
+		   If a condition was not went through first, but later in the experiment, values are NA.
+		   I.e. only those columns corresponding to the subjets' first conditions have values
+
+	Columns 10 - 19: Condition 1
+	Columns 20 - 29: Condition 2
+	Columns 30 - 39: Condition 3
+	Columns 40 - 49: Condition 4
+	Columns 50 - 59: Condition 5
+	Columns 60 - 69: Condition 6
+
+Column 70:	   First Attention Check Question 
+Column 71 - 154:   Subject's vignette ratings for all following experimental conditions (Following 
+		   the first presented one). For Condition 1,2,5 and 6, subjects were either presented
+		   a version including attention check items, or one without. Regularly, subjects
+		   were presented Vignettes including attention checks in Conditions 2 and 5. If 2 or 5
+		   was already presented as the first vignette, attention checks were presented for Conditions
+		   1 or 6
+
+	Columns 71 - 80:   Condition 1
+	Columns 81 - 91:   Condition 1 including an attention check item (SQ011)
+	Columns 92 - 102:  Condition 2 including an attention check item (SQ011)
+	Columns 103 - 112: Condition 3 
+	Columns 113 - 122: Condition 4
+	Columns 123 - 133: Condition 5 including an attention check item (SQ011)
+	Columns 134 - 144: Condition 6 including an attention check item (SQ011)
+	Columns 145 - 154: Condition 6
+
+Columns 155:       Interim Screen  
+Columns 156 - 172: Subject's self-assessments
+Columns 173:	   Interim Screen
+Columns 174 - 185: Demographics
+
+	Column 174: Age
+	Columns 175 - 176: Biological sex
+	Columns 177 - 178: gender identity
+	Columns 179 - 180: Education
+	Columns 181 - 182: Occupation
+	Column  183: Study subject (Degree program)
+	Columns 184 -185: Occupational area
+
+Column  186: 	   Comment
+Columns 187 - 226: Timings  
