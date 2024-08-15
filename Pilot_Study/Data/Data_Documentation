@@ -28,7 +28,7 @@ Every Subject responds to one out of the four experimental conditions (between-s
 2. IPIP-NEO-120 (Johnson, 2014) scale items used
 
 There are two scales being used: Liberalism and Intellect. Additionally, one item each from the
-Self-efficacy and Artistic interests scales were used for a manipulation check.
+Self-efficacy and Artistic interests scales were used for manipulation checks.
 In the following table, each IPIP-NEO-120 item is paired with the correpsonding response
 key in Data_Pilot.csv: 
 
@@ -59,7 +59,7 @@ Columns 6 - 9: 	   Demographics
 	Column 8:  Check if 18yo or older (AO01 = yes)
 	Column 9:  Age
 
-Column 10:	   Random integer from (1 or 2)
+Column 10:	   Random integer (1 or 2)
 Column 11: 	   Experimental Condition
 Columns 12 - 51:   Subject's vignette ratings. Because it was a between-subject design,
 		   subjects only went through one experimental condition. Therefore, 
