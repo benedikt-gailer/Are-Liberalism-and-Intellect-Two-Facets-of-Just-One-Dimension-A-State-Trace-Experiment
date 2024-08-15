@@ -1,0 +1,84 @@
+Documentation for Data_Pilot.csv
+
+1. Experimental Conditions
+2. IPIP-NEO-120 (Johnson, 2014) scale items used
+3. General structure of the data
+
+
+
+1. Experimental Conditions
+
+There are four experimental conditions. Experimental Conditions differ in the described personality traits
+of the vignette person:
+1 = Low self-efficacy, high artistic interests
+2 = High self-efficacy, low artistic interests
+3 = High self-efficacy, high artistic interersts
+4 = Low self-efficacy, low artistic interests
+
+In Data_Pilot.csv, these conditions are keyed as:
+1 = C10O1
+2 = C11O0
+3 = C11O1
+4 = C10O0
+
+
+Every Subject responds to one out of the four experimental conditions (between-subject design)
+
+
+2. IPIP-NEO-120 (Johnson, 2014) scale items used
+
+There are two scales being used: Liberalism and Intellect. Additionally, one item each from the
+Self-efficacy and Artistic interests scales were used for a manipulation check.
+In the following table, each IPIP-NEO-120 item is paired with the correpsonding response
+key in Data_Pilot.csv: 
+
+
+Liberalism		Self-efficacy	
+
+item O28 =  SQ002 	item C05 = SQ009
+item O58 =  SQ004		
+item O88 =  SQ006			
+item O118 = SQ008			
+
+Intellect		Artistic interests
+
+item O23 =  SQ001	item O89 = SQ010
+item O53 =  SQ003
+item O83 =  SQ005
+item O113 = SQ007
+
+
+
+3. General Structure of the data
+
+
+Columns 1 - 5: 	   Survey Metadata
+Columns 6 - 9: 	   Demographics
+	Column 6:  Gender (AO01 = female, AO02 = male)
+	Column 7:  Open text field (if neither male nor female)
+	Column 8:  Check if 18yo or older (AO01 = yes)
+	Column 9:  Age
+
+Column 10:	   Random integer from (1 or 2)
+Column 11: 	   Experimental Condition
+Columns 12 - 51:   Subject's vignette ratings. Because it was a between-subject design,
+		   subjects only went through one experimental condition. Therefore, 
+		   All columns corresponding to conditions a subject has not went through
+		   Contain NAs.
+
+	Columns 12 -21: Condition 1
+	Columns 22 -31: Condition 2
+	Columns 32 -41: Condition 3
+	Columns 42 -51: Condition 4 
+
+Column  52: 	   Comment
+Column  53:        Consent before sending Data
+Columns 54 - 70:   Timings  
+
+
+
+
+Reference:
+
+Johnson, J. A. (2014). Measuring thirty facets of the five factor model with a 120-item public domain inventory:
+Development of the IPIP-NEO-120. Journal of Research in Personality, 51, 78–89. https://doi.org/10.1016/j.jrp.2014.05.003
