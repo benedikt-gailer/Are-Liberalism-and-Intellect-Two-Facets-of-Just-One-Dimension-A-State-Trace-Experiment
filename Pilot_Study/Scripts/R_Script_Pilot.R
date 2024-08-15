@@ -32,7 +32,30 @@ library(readr)
 survey_Data_Pilot_raw <- read_csv("C:/Users/bened/OneDrive/Desktop/TUC/Wintersemester 202223/Masterarbeit/Daten_MA/Data_Pilot.csv")
 View(survey_Data_Pilot_raw)
 
+# Experimental Conditions:
+#C10O1: Condition 1
+#C11O0: Condition 2
+#C11O1: Condition 3
+#C10O0: Condition 4
 
+
+#Liberalism items:
+#SQ002
+#SQ004
+#SQ006
+#SQ008
+
+#Intellect items:
+#SQ001
+#SQ003
+#SQ005
+#SQ007
+
+#Item O89
+#SQ010
+
+#Item C05
+#SQ009
 
 #### 2. Tidy Data
 
