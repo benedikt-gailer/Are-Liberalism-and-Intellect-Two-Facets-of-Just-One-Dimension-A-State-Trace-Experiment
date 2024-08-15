@@ -1,5 +1,11 @@
+Documentation for Data_Main.csv
 
-Opening comments:
+1. Experimental Conditions
+2. IPIP-NEO-120 (Johnson, 2014) scale items used
+3. General Structure of the Data
+
+
+
 
 1. Experimental Conditions
 
@@ -101,3 +107,11 @@ Columns 174 - 185: Demographics
 
 Column  186: 	   Comment
 Columns 187 - 226: Timings  
+
+
+
+
+Reference:
+
+Johnson, J. A. (2014). Measuring thirty facets of the five factor model with a 120-item public domain inventory:
+Development of the IPIP-NEO-120. Journal of Research in Personality, 51, 78–89. https://doi.org/10.1016/j.jrp.2014.05.003
