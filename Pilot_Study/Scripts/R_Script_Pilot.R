@@ -201,7 +201,7 @@ rm(List_sum)
 return(get(List_name))
 }
 
-# Apply sum function to variables pfor all conditions each
+# Apply sum function to variables for all conditions each
 #   1   C10O1
 Liste_C10O1 <- sumscoreSTA(dat = survey_data_tidy, condition = "C10O1")
 
@@ -432,7 +432,7 @@ hist(new_C10_vec, main = "Antworten Kompetenz: Bedingung wenig Kompetenz",
 
 
 
-#C11: Check Item C05 responses for Conditions withhigh self-efficacy
+#C11: Check Item C05 responses for Conditions with high self-efficacy
 
 #get all C05 item answers for high self-efficacy conditions 
 C11_vec <- c(survey_data_tidy$`C11O0prox[SQ009]`, survey_data_tidy$`C11O1prox[SQ009]`)
