@@ -41,6 +41,34 @@ raw_data <- read_csv("C:/Users/bened/OneDrive/Desktop/TUC/Wintersemester 202223/
 
 View(raw_data)
 
+# Experimental Conditions:
+#C10O1: Condition 1
+#C11O0: Condition 2
+#C10OM: Condition 3
+#C11OM: Condition 4
+#C11O1: Condition 5
+#C10O0: Condition 6
+
+#prefix 'ws': within-subject condition, i.e. not the first condition that
+#subjects went through
+
+#Liberalism items:
+#SQ002
+#SQ004
+#SQ006
+#SQ008
+
+#Intellect items:
+#SQ001
+#SQ003
+#SQ005
+#SQ007
+
+#Item O89
+#SQ010
+
+#Item C05
+#SQ009
 
 
 ################################################################################
